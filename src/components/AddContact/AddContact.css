@@ -1,0 +1,17 @@
+.contact-form {
+  text-align: center;
+}
+
+.inp {
+  margin: 5px;
+  width: 50vw;
+}
+
+.btn-add {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: rgb(87, 87, 214);
+  margin-top: 15px;
+}

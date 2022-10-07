@@ -1,0 +1,24 @@
+.btn-delete {
+  background-color: rgb(223, 36, 36);
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.btn-edit {
+  background-color: rgb(6, 126, 16);
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.list-img {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}

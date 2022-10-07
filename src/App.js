@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import AddContact from "./components/AddContact/AddContact";
+import ContactList from "./components/ContactList/ContactList";
+import EditContact from "./components/EditContact/EditContact";
 
-function App() {
+const App = () => {
+  const [contacts, setContacts] = useState([]);
+
+  function addContact(newObj) {
+    let newContacts = [...contacts];
+    newContacts.push(newObj);
+    setContacts(newContacts);
+  }
+
+  function deleteContact(id) {
+    let newContacts = [...contacts];
+    newContacts = newContacts.filter((item) => item.id !== id);
+    setContacts(newContacts);
+  }
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [editContact, setEditContact] = useState({});
+
+  function handleEdit(id) {
+    let obj = contacts.find((item) => item.id === id);
+    setEditContact(obj);
+    setShow(true);
+  }
+
+  function handleSave(obj) {
+    let newContacts = contacts.map((item) => {
+      if (item.id === obj.id) {
+        return obj;
+      }
+      return item;
+    });
+    setContacts(newContacts);
+    setShow(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AddContact addContact={addContact} />
+      <ContactList
+        contacts={contacts}
+        deleteContact={deleteContact}
+        handleEdit={handleEdit}
+      />
+      {show && (
+        <EditContact
+          editContact={editContact}
+          show={show}
+          handleClose={handleClose}
+          handleSave={handleSave}
+        />
+      )}
+    </>
   );
-}
+};
 
 export default App;
